@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="stylesheets/style.css" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<main>
+			<h1>Log in</h1>
+			<!-- TODO: Make the error appear on each field -->
+			<% if (errors.length > 0) { %> <% errors.forEach(error => { %>
+			<p><%= error.msg %></p>
+			<% }) %> <% } %> <% if (messages.error) { %>
+			<p><%= messages.error %></p>
+			<% } %>
+			<form action="" method="post">
+				<div>
+					<label for="username">Username:</label>
+					<input
+						type="text"
+						name="username"
+						id="username"
+						value="<%= body.username %>"
+						required
+					/>
+				</div>
+
+				<div>
+					<label for="password">Password:</label>
+					<input type="password" name="password" id="password" required />
+				</div>
+
+				<div>
+					<input type="submit" value="Log In" />
+				</div>
+			</form>
+		</main>
+	</body>
+</html>
