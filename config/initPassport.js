@@ -13,7 +13,7 @@ function initPassport(passport) {
 				}
 
 				if (!(await bcrypt.compare(password, user.password))) {
-					return done(null, false, { message: "Incorect password" });
+					return done(null, false, { message: "Incorrect password" });
 				}
 
 				return done(null, user);
