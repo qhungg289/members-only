@@ -46,9 +46,45 @@ exports.signUpPost = [
 				password: hashedPassword,
 			});
 
-			await user.save().then(res.redirect("/"));
+			await user.save().then(res.redirect("/login"));
 		} catch (error) {
 			return next(error);
 		}
 	},
 ];
+
+exports.logInGet = (req, res, next) => {
+	res.render("login", {
+		title: "Only Fun | Log In",
+		errors: [],
+		body: req.body,
+	});
+};
+
+exports.logInPost = [
+	check("username").exists().isLength({ min: 4 }).trim().escape(),
+	check("password").exists().isLength({ min: 4 }).trim().escape(),
+	(req, res, next) => {
+		const errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			return res.render("login", {
+				title: "Only Fun | Log In",
+				errors: errors.array(),
+				body: req.body,
+			});
+		}
+
+		next();
+	},
+	passport.authenticate("local", {
+		successRedirect: "/",
+		failureRedirect: "/login",
+		failureFlash: true,
+	}),
+];
+
+exports.logOutGet = (req, res, next) => {
+	req.logout();
+	res.redirect("/");
+};
