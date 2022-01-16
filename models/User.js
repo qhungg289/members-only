@@ -14,4 +14,8 @@ userSchema.virtual("url").get(function () {
 	return `/user/${this._id}`;
 });
 
+userSchema.virtual("avatar").get(function () {
+	return `https://avatars.dicebear.com/api/initials/${this.firstName}-${this.lastName}.svg`;
+});
+
 module.exports = mongoose.model("User", userSchema);
