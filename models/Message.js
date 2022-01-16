@@ -6,9 +6,7 @@ const messageSchema = new mongoose.Schema({
 	content: { type: String, required: true },
 	createdAt: {
 		type: String,
-		default: () => {
-			DateTime.now().toLocaleString(DateTime.DATETIME_MED);
-		},
+		default: () => DateTime.now().toLocaleString(DateTime.DATETIME_MED),
 	},
 });
 
