@@ -9,5 +9,10 @@
 	</head>
 	<body>
 		<h1><%= title %></h1>
+		<% if (currentUser) { %>
+		<p>Welcome back! <%= currentUser.firstName %></p>
+		<a href="/logout">Log out</a>
+		<img src="<%= currentUser.avatar %>" alt="User avatar" />
+		<% } %>
 	</body>
 </html>
