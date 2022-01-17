@@ -21,7 +21,7 @@
 		<% } %> <% if (messages.length > 0) { %> <% messages.forEach(message => { %>
 		<a href="<%= message.url %>">
 			<div>
-				<% if (currentUser) { %>
+				<% if (currentUser.isMember) { %>
 				<p><b>Author:</b> <%= message.author.fullName %></p>
 				<% } else { %>
 				<p><b>Author:</b> Anonymous</p>
