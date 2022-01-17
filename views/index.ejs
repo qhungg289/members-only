@@ -9,27 +9,38 @@
 	</head>
 	<body>
 		<h1><%= title %></h1>
+
 		<% if (currentUser) { %>
-		<p>Welcome back! <%= currentUser.firstName %></p>
-		<a href="/logout">Log out</a>
-		<img src="<%= currentUser.avatar %>" alt="User avatar" />
+			<p>
+				Welcome back!
+				<a href="<%= currentUser.url %>"><%= currentUser.firstName %></a>
+			</p>
+			<a href="/logout">Log out</a>
+			<img src="<%= currentUser.avatar %>" alt="User avatar" />
 		<% } else { %>
-		<div>
-			<a href="/signup">Sign up</a>
-			<a href="/login">Log in</a>
-		</div>
-		<% } %> <% if (messages.length > 0) { %> <% messages.forEach(message => { %>
-		<a href="<%= message.url %>">
 			<div>
-				<% if (currentUser.isMember) { %>
-				<p><b>Author:</b> <%= message.author.fullName %></p>
-				<% } else { %>
-				<p><b>Author:</b> Anonymous</p>
-				<% } %>
-				<p><%= message.content %></p>
-				<small><%= message.createdAt %></small>
+				<a href="/signup">Sign up</a>
+				<a href="/login">Log in</a>
 			</div>
-		</a>
-		<% }) %> <% } %>
+		<% } %>
+		
+		<% if (messages.length > 0) { %>
+			<% messages.forEach(message => { %>
+				<div>
+					<p>
+						<b>Author:</b>
+
+						<% if (currentUser && currentUser.isMember) { %>
+							<a href="<%= message.author.url %>"><%= message.author.fullName %></a>
+						<% } else { %>
+							<span>Anonymous</span>
+						<% } %> 
+						
+					</p>
+					<p><%= message.content %></p>
+					<small><%= message.createdAt %></small>
+				</div>
+			<% }) %>
+		<% } %>
 	</body>
 </html>

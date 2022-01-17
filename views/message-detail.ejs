@@ -10,11 +10,16 @@
 	<body>
 		<main>
 			<div>
-				<% if (currentUser.isMember) { %>
-				<p><b>Author:</b> <%= message.author.fullName %></p>
-				<% } else { %>
-				<p><b>Author:</b> Anonymous</p>
-				<% } %>
+				<p>
+					<b>Author:</b> 
+					
+					<% if (currentUser && currentUser.isMember) { %>
+						<a href="<%= message.author.url %>"><%= message.author.fullName %></a>
+					<% } else { %>
+						<span>Anonymous</span>
+					<% } %>
+
+				</p>
 				<p><%= message.content %></p>
 				<small><%= message.createdAt %></small>
 			</div>
