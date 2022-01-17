@@ -3,10 +3,6 @@ const User = require("../models/User");
 const { check, validationResult } = require("express-validator");
 
 exports.newMessageGet = (req, res, next) => {
-	if (!req.isAuthenticated()) {
-		return res.redirect("/login");
-	}
-
 	res.render("new-message-form", {
 		title: "Only Fun | New Message",
 		errors: [],
