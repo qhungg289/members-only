@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <main>
+        <div>
+            <h1><%= user.fullName %></h1>
+            <p>@<%= user.username %></p>
+
+            <% if (isLogIn) { %>
+             <a href="<%= user.url %>/edit">Edit</a>
+            <% } %>
+        </div>
+        <div>
+            <p>Messages:</p>
+            <% if (user.messages.length > 0) { %>
+                <% user.messages.forEach(message => { %>
+                    <div class="message-card">
+                        <div>
+                            <span>
+                                <b>Author: </b>
+                                <span><%= user.fullName %></span>
+                            </span>
+                            <p><%= message.content %></p>
+                            <small><%= message.createdAt %></small>
+                        </div>
+                        <div>
+                            <a href="<%= message.url %>">Detail</a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>This user doesn't have any messages yet!</p>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>
