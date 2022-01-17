@@ -13,16 +13,23 @@
 		<p>Welcome back! <%= currentUser.firstName %></p>
 		<a href="/logout">Log out</a>
 		<img src="<%= currentUser.avatar %>" alt="User avatar" />
-		<% } %> <% if (messages.length > 0) { %> <% messages.forEach(message => { %>
+		<% } else { %>
 		<div>
-			<% if (currentUser) { %>
-			<p><b>Author:</b> <%= message.author.fullName %></p>
-			<% } else { %>
-			<p><b>Author:</b> Anonymous</p>
-			<% } %>
-			<p><%= message.content %></p>
-			<small><%= message.createdAt %></small>
+			<a href="/signup">Sign up</a>
+			<a href="/login">Log in</a>
 		</div>
+		<% } %> <% if (messages.length > 0) { %> <% messages.forEach(message => { %>
+		<a href="<%= message.url %>">
+			<div>
+				<% if (currentUser) { %>
+				<p><b>Author:</b> <%= message.author.fullName %></p>
+				<% } else { %>
+				<p><b>Author:</b> Anonymous</p>
+				<% } %>
+				<p><%= message.content %></p>
+				<small><%= message.createdAt %></small>
+			</div>
+		</a>
 		<% }) %> <% } %>
 	</body>
 </html>
