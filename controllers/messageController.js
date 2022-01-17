@@ -1,4 +1,5 @@
 const Message = require("../models/Message");
+const User = require("../models/User");
 const { check, validationResult } = require("express-validator");
 
 exports.newMessageGet = (req, res, next) => {
@@ -31,8 +32,13 @@ exports.newMessagePost = [
 				author: req.user._id,
 				content: req.body.message,
 			});
+			const user = await User.findById(req.user._id);
 
-			await msg.save().then(res.redirect("/"));
+			await msg
+				.save()
+				.then(user.messages.push(msg._id))
+				.then(await user.save())
+				.then(res.redirect("/"));
 		} catch (error) {
 			return next(error);
 		}
