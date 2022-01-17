@@ -18,4 +18,8 @@ userSchema.virtual("avatar").get(function () {
 	return `https://avatars.dicebear.com/api/initials/${this.firstName}-${this.lastName}.svg`;
 });
 
+userSchema.virtual("fullName").get(function () {
+	return `${this.firstName} ${this.lastName}`;
+});
+
 module.exports = mongoose.model("User", userSchema);

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { DateTime } = require("luxon");
 
 const messageSchema = new mongoose.Schema({
-	author: { type: mongoose.Types.ObjectId, required: true },
+	author: { type: mongoose.Types.ObjectId, required: true, ref: "User" },
 	content: { type: String, required: true },
 	createdAt: {
 		type: String,
