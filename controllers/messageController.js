@@ -45,4 +45,15 @@ exports.newMessagePost = [
 	},
 ];
 
-exports.messageDetailGet = async (req, res, next) => {};
+exports.messageDetailGet = async (req, res, next) => {
+	try {
+		const msg = await Message.findById(req.params.id).populate("author");
+
+		res.render("message-detail", {
+			title: "Only Fun | Message Detail",
+			message: msg,
+		});
+	} catch (error) {
+		return next(error);
+	}
+};
