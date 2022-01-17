@@ -5,7 +5,13 @@ const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 
 exports.homeGet = async (req, res, next) => {
-	res.render("index", { title: "Only Fun" });
+	try {
+		const messages = await Message.find({}).populate("author");
+
+		res.render("index", { title: "Only Fun", messages });
+	} catch (error) {
+		return next(error);
+	}
 };
 
 exports.signUpGet = (req, res, next) => {
