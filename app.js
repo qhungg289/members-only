@@ -36,8 +36,10 @@ app.use((req, res, next) => {
 });
 
 const indexRouter = require("./routes/index");
+const messageRouter = require("./routes/message");
 
 app.use("/", indexRouter);
+app.use("/message", messageRouter);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server start on localhost:${port}`));
