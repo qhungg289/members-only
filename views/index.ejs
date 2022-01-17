@@ -26,19 +26,24 @@
 		
 		<% if (messages.length > 0) { %>
 			<% messages.forEach(message => { %>
-				<div>
-					<p>
-						<b>Author:</b>
-
-						<% if (currentUser && currentUser.isMember) { %>
-							<a href="<%= message.author.url %>"><%= message.author.fullName %></a>
-						<% } else { %>
-							<span>Anonymous</span>
-						<% } %> 
-						
-					</p>
-					<p><%= message.content %></p>
-					<small><%= message.createdAt %></small>
+				<div class="message-card">
+					<div>
+						<span>
+							<b>Author:</b>
+	
+							<% if (currentUser && currentUser.isMember) { %>
+								<a href="<%= message.author.url %>"><%= message.author.fullName %></a>
+							<% } else { %>
+								<span>Anonymous</span>
+							<% } %> 
+							
+						</span>
+						<p><%= message.content %></p>
+						<small><%= message.createdAt %></small>
+					</div>
+					<div>
+						<a href="<%= message.url %>">Detail</a>
+					</div>
 				</div>
 			<% }) %>
 		<% } %>
