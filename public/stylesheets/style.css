@@ -1,20 +1,24 @@
 body {
-	background-color: #f2f2f2;
+	background-color: #f8f8f8;
 	color: #4a4a4a;
 	font-family: sans-serif;
 }
 
 a {
-	color: #4a4a4a;
+	color: #5d83ff;
 	text-decoration: none;
 }
 
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+
 img {
-	width: 50%;
+	width: 4rem;
 }
 
 .message-card {
-	border-top: 4px solid;
 	display: flex;
 	padding: 1rem;
 	margin-inline: auto;
@@ -24,4 +28,6 @@ img {
 	justify-content: space-between;
 	background: white;
 	align-items: flex-end;
+	border-radius: 12px;
+	box-shadow: 0px 3px 4px #70707026;
 }
