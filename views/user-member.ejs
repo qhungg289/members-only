@@ -9,21 +9,25 @@
 </head>
 <body>
     <main>
-        <p>Enter the secret key to become a member</p>
-        <% if (errors.length > 0) { %>
-            <% errors.forEach(error => { %>
-                <p><%= error.msg %></p>
-            <% }) %>
+        <% if (!currentUser.isMember) { %>
+            <p>Enter the secret key to become a member</p>
+            <% if (errors.length > 0) { %>
+                <% errors.forEach(error => { %>
+                    <p><%= error.msg %></p>
+                <% }) %>
+            <% } %>
+            <form action="" method="post">
+                <div>
+                    <label for="secret">Secret key:</label>
+                    <input type="password" name="secret" id="secret">
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        <% } else { %>
+            <p>You are already a member!</p>
         <% } %>
-        <form action="" method="post">
-            <div>
-                <label for="secret">Secret key:</label>
-                <input type="password" name="secret" id="secret">
-            </div>
-            <div>
-                <input type="submit" value="Submit">
-            </div>
-        </form>
     </main>
 </body>
 </html>
