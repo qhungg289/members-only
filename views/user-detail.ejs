@@ -10,11 +10,13 @@
 <body>
     <main>
         <div>
+            <img src="<%= user.avatar %>" alt="User avatar">
             <h1><%= user.fullName %></h1>
             <p>@<%= user.username %></p>
-
             <% if (isLogIn) { %>
-             <a href="<%= user.url %>/edit">Edit</a>
+                <a href="<%= user.url %>/edit">Edit</a>
+                <a href="<%= user.url %>/member">Become a member</a>
+                <a href="/message/new">New message</a>
             <% } %>
         </div>
         <div>
