@@ -57,3 +57,44 @@ exports.userMemberPost = [
 		}
 	},
 ];
+
+exports.userEditGet = async (req, res, next) => {
+	try {
+		const user = await User.findById(req.params.id);
+
+		res.render("user-edit", {
+			user,
+			title: "Only Fun | Edit personal information",
+			errors: [],
+		});
+	} catch (error) {
+		return next(error);
+	}
+};
+
+exports.userEditPost = [
+	check("firstName").exists().isLength({ min: 1 }).trim().escape(),
+	check("lastName").exists().isLength({ min: 1 }).trim().escape(),
+	async (req, res, next) => {
+		const errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			return res.render("user-edit", {
+				user,
+				title: "Only Fun | Edit personal information",
+				errors: errors.array(),
+			});
+		}
+
+		try {
+			const user = await User.findByIdAndUpdate(req.params.id, {
+				firstName: req.body.firstName,
+				lastName: req.body.lastName,
+			});
+
+			res.redirect(user.url);
+		} catch (error) {
+			return next(error);
+		}
+	},
+];
