@@ -14,4 +14,8 @@ router.get("/:id/member", userController.userMemberGet);
 
 router.post("/:id/member", userController.userMemberPost);
 
+router.get("/:id/edit", userController.userEditGet);
+
+router.post("/:id/edit", userController.userEditPost);
+
 module.exports = router;
