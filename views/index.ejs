@@ -15,8 +15,9 @@
 				Welcome back!
 				<a href="<%= currentUser.url %>"><%= currentUser.firstName %></a>
 			</p>
-			<a href="/logout">Log out</a>
+			<a href="/message/new">Create new message</a>
 			<img src="<%= currentUser.avatar %>" alt="User avatar" />
+			<a href="/logout">Log out</a>
 		<% } else { %>
 			<div>
 				<a href="/signup">Sign up</a>
