@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <main>
+        <% if (errors.length > 0) { %>
+            <% errors.forEach(error => { %>
+                <p><%= error.msg %></p>
+            <% }) %>
+        <% } %>
+        <form action="" method="post">
+            <div>
+                <label for="firstName">First name:</label>
+                <input type="text" name="firstName" id="firstName" required value="<%= user.firstName %>">
+            </div>
+            <div>
+                <label for="lastName">Last name:</label>
+                <input type="text" name="lastName" id="lastName" required value="<%= user.lastName %>">
+            </div>
+            <div>
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </main>
+</body>
+</html>
