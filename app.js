@@ -38,10 +38,12 @@ app.use((req, res, next) => {
 const indexRouter = require("./routes/index");
 const messageRouter = require("./routes/message");
 const userRouter = require("./routes/user");
+const adminRouter = require("./routes/admin");
 
 app.use("/", indexRouter);
 app.use("/message", messageRouter);
 app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server start on localhost:${port}`));
