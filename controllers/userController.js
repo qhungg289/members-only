@@ -10,7 +10,7 @@ exports.userDetailGet = async (req, res, next) => {
 		res.render("user-detail", {
 			user,
 			isLogIn,
-			title: `Only Fun | ${user.fullName}`,
+			title: `onlyFUN! | ${user.fullName}`,
 		});
 	} catch (error) {
 		return next(error);
@@ -23,7 +23,7 @@ exports.userMemberGet = (req, res, next) => {
 	}
 
 	res.render("user-member", {
-		title: `Only Fun | Become a member`,
+		title: `onlyFUN! | Become a member`,
 		errors: [],
 	});
 };
@@ -35,7 +35,7 @@ exports.userMemberPost = [
 
 		if (!errors.isEmpty()) {
 			return res.render("user-member", {
-				title: `Only Fun | Become a member`,
+				title: `onlyFUN! | Become a member`,
 				errors: errors.array(),
 			});
 		}
@@ -48,7 +48,7 @@ exports.userMemberPost = [
 				await user.save().then(res.redirect(user.url));
 			} else {
 				res.render("user-member", {
-					title: `Only Fun | Become a member`,
+					title: `onlyFUN! | Become a member`,
 					errors: [{ msg: "Secret key is incorrect" }],
 				});
 			}
@@ -64,7 +64,7 @@ exports.userEditGet = async (req, res, next) => {
 
 		res.render("user-edit", {
 			user,
-			title: "Only Fun | Edit personal information",
+			title: "onlyFUN! | Edit personal information",
 			errors: [],
 		});
 	} catch (error) {
@@ -81,7 +81,7 @@ exports.userEditPost = [
 		if (!errors.isEmpty()) {
 			return res.render("user-edit", {
 				user,
-				title: "Only Fun | Edit personal information",
+				title: "onlyFUN! | Edit personal information",
 				errors: errors.array(),
 			});
 		}

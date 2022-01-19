@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 
 exports.newMessageGet = (req, res, next) => {
 	res.render("new-message-form", {
-		title: "Only Fun | New Message",
+		title: "onlyFUN! | New Message",
 		errors: [],
 		body: req.body,
 	});
@@ -17,7 +17,7 @@ exports.newMessagePost = [
 
 		if (!errors.isEmpty()) {
 			return res.render("new-message-form", {
-				title: "Only Fun | New Message",
+				title: "onlyFUN! | New Message",
 				errors: errors.array(),
 				body: req.body,
 			});
@@ -46,7 +46,7 @@ exports.messageDetailGet = async (req, res, next) => {
 		const msg = await Message.findById(req.params.id).populate("author");
 
 		res.render("message-detail", {
-			title: "Only Fun | Message Detail",
+			title: "onlyFUN! | Message Detail",
 			message: msg,
 		});
 	} catch (error) {

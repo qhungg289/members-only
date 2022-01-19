@@ -8,7 +8,7 @@ exports.homeGet = async (req, res, next) => {
 	try {
 		const messages = await Message.find({}).populate("author");
 
-		res.render("index", { title: "Only Fun", messages });
+		res.render("index", { title: "onlyFUN!", messages });
 	} catch (error) {
 		return next(error);
 	}
@@ -16,7 +16,7 @@ exports.homeGet = async (req, res, next) => {
 
 exports.signUpGet = (req, res, next) => {
 	res.render("signup", {
-		title: "Only Fun | Sign Up",
+		title: "onlyFUN! | Sign Up",
 		errors: [],
 		body: req.body,
 	});
@@ -36,7 +36,7 @@ exports.signUpPost = [
 
 		if (!errors.isEmpty()) {
 			return res.render("signup", {
-				title: "Only Fun | Sign Up",
+				title: "onlyFUN! | Sign Up",
 				errors: errors.array(),
 				body: req.body,
 			});
@@ -61,7 +61,7 @@ exports.signUpPost = [
 
 exports.logInGet = (req, res, next) => {
 	res.render("login", {
-		title: "Only Fun | Log In",
+		title: "onlyFUN! | Log In",
 		errors: [],
 		body: req.body,
 	});
@@ -75,7 +75,7 @@ exports.logInPost = [
 
 		if (!errors.isEmpty()) {
 			return res.render("login", {
-				title: "Only Fun | Log In",
+				title: "onlyFUN! | Log In",
 				errors: errors.array(),
 				body: req.body,
 			});
