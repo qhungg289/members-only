@@ -5,68 +5,94 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="stylesheets/style.css" />
+		<script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
 		<title><%= title %></title>
 	</head>
-	<body>
-		<main>
-			<h1>Sign up</h1>
-			<!-- TODO: Make the error appear on each field -->
-			<% if (errors.length > 0) { %> <% errors.forEach(error => { %>
-			<p><%= error.msg %></p>
-			<% }) %> <% } %>
-			<form action="" method="post">
-				<div>
-					<label for="firstName">First name:</label>
-					<input
-						type="text"
-						name="firstName"
-						id="firstName"
-						value="<%= body.firstName %>"
-						required
-					/>
-				</div>
+	<body class="bg-gray-100 text-neutral-800">
+		<header class="relative">
+			<%- include("nav") %>
+		</header>
+		<main class="mt-24">
+			<div class="container mx-auto px-4 flex flex-col items-center">
+				<h1 class="font-bold text-4xl mt-4 mb-12">Sign up</h1>
+				<span class="mb-12 text-neutral-500">Already had an account? <a href="/login" class="text-violet-600 font-semibold hover:underline">Log in</a></span>
 
-				<div>
-					<label for="lastName">Last name:</label>
-					<input
-						type="text"
-						name="lastName"
-						id="lastName"
-						value="<%= body.lastName %>"
-						required
-					/>
-				</div>
+				<form action="" method="post" class="bg-white rounded-md shadow-md w-5/6 sm:w-96 p-6 mb-6 flex flex-col space-y-7">
+					<% if (errors.length > 0) { %>
+						<% errors.forEach(error => { %>
+							<p class="bg-red-100 text-red-500 font-semibold rounded-md px-3 py-2"><%= error.msg %></p>
+						<% }) %> 
+					<% } %>
 
-				<div>
-					<label for="username">Username:</label>
-					<input
-						type="text"
-						name="username"
-						id="username"
-						value="<%= body.username %>"
-						required
-					/>
-				</div>
+					<div class="flex flex-col">
+						<label for="firstName" class="font-semibold mb-1">First name:</label>
+						<input
+							type="text"
+							name="firstName"
+							id="firstName"
+							value="<%= body.firstName %>"
+							required
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+						/>
+					</div>
+	
+					<div class="flex flex-col">
+						<label for="lastName" class="font-semibold mb-1">Last name:</label>
+						<input
+							type="text"
+							name="lastName"
+							id="lastName"
+							value="<%= body.lastName %>"
+							required
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+						/>
+					</div>
+					
+					<hr>
 
-				<div>
-					<label for="password">Password:</label>
-					<input type="password" name="password" id="password" required />
-				</div>
-
-				<div>
-					<label for="confirmPassword">Confirm password:</label>
-					<input
-						type="password"
-						name="confirmPassword"
-						id="confirmPassword"
-						required
-					/>
-				</div>
-
-				<div>
-					<input type="submit" value="Sign Up" />
-				</div>
-			</form>
+					<div class="flex flex-col">
+						<label for="username" class="font-semibold mb-1">Username:</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							value="<%= body.username %>"
+							required
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+						/>
+					</div>
+	
+					<div class="flex flex-col">
+						<label for="password" class="font-semibold mb-1">Password:</label>
+						<input 
+							type="password" 
+							name="password" 
+							id="password" 
+							required 
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+						/>
+					</div>
+	
+					<div class="flex flex-col">
+						<label for="confirmPassword" class="font-semibold mb-1">Confirm password:</label>
+						<input
+							type="password"
+							name="confirmPassword"
+							id="confirmPassword"
+							required
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+						/>
+					</div>
+	
+					<div class="flex flex-col">
+						<input 
+							type="submit" 
+							value="Sign Up" 
+							class="bg-violet-600 text-white font-semibold w-full px-3 py-2 rounded-md hover:bg-violet-500 active:bg-violet-700 transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-violet-600"
+						/>
+					</div>
+				</form>
+			</div>
 		</main>
 	</body>
 </html>
