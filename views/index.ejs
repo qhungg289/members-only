@@ -5,48 +5,35 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="stylesheets/style.css" />
+		<script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
 		<title><%= title %></title>
 	</head>
-	<body>
-		<h1><%= title %></h1>
-
-		<% if (currentUser) { %>
-			<p>
-				Welcome back!
-				<a href="<%= currentUser.url %>"><%= currentUser.firstName %></a>
-			</p>
-			<a href="/message/new">Create new message</a>
-			<img src="<%= currentUser.avatar %>" alt="User avatar" />
-			<a href="/logout">Log out</a>
-		<% } else { %>
-			<div>
-				<a href="/signup">Sign up</a>
-				<a href="/login">Log in</a>
-			</div>
-		<% } %>
-		
-		<% if (messages.length > 0) { %>
-			<% messages.forEach(message => { %>
-				<div class="message-card">
-					<div>
-						<span>
-							<b>Author:</b>
-	
-							<% if (currentUser && currentUser.isMember) { %>
-								<a href="<%= message.author.url %>"><%= message.author.fullName %></a>
-							<% } else { %>
-								<span>Anonymous</span>
-							<% } %> 
-							
-						</span>
-						<p><%= message.content %></p>
-						<small><%= message.createdAt %></small>
+	<body class="bg-gray-100 text-neutral-800">
+		<header class="relative">
+			<%- include("nav") %> 
+		</header>
+		<main class="mt-24">
+			<% if (messages.length > 0) { %>
+				<% messages.forEach(message => { %>
+					<div class="bg-white flex items-end justify-between rounded-md shadow-md my-6 p-4 w-5/6 md:w-1/2 mx-auto">
+						<div>
+							<span class="text-slate-500">
+								Author:
+								<% if (currentUser && currentUser.isMember) { %>
+									<a href="<%= message.author.url %>" class="text-violet-600"><%= message.author.fullName %></a>
+								<% } else { %>
+									<span>Anonymous</span>
+								<% } %>
+							</span>
+							<p class="leading-relaxed my-3 font-medium"><%= message.content %></p>
+							<small class="text-slate-500 text-xs"><%= message.createdAt %></small>
+						</div>
+						<div>
+							<a href="<%= message.url %>" class="text-violet-600 text-sm font-medium hover:underline">Detail</a>
+						</div>
 					</div>
-					<div>
-						<a href="<%= message.url %>">Detail</a>
-					</div>
-				</div>
-			<% }) %>
-		<% } %>
+				<% }) %>
+			<% } %>
+		</main>
 	</body>
 </html>
