@@ -41,12 +41,12 @@ exports.newMessagePost = [
 	},
 ];
 
-exports.messageDetailGet = async (req, res, next) => {
+exports.messageDeleteGet = async (req, res, next) => {
 	try {
 		const msg = await Message.findById(req.params.id).populate("author");
 
-		res.render("message-detail", {
-			title: "onlyFUN! | Message Detail",
+		res.render("message-delete", {
+			title: "onlyFUN! | Delete message",
 			message: msg,
 		});
 	} catch (error) {
