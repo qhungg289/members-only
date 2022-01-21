@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node .",
 		"dev": "npx nodemon .",
-		"tailwind-build": "npx tailwindcss -i .\\public\\stylesheets\\tailwind.css -o .\\public\\stylesheets\\style.css --watch"
+		"tailwind-build": "npx tailwindcss -i .\\public\\stylesheets\\tailwind.css -o .\\public\\stylesheets\\style.css --minify --watch"
 	},
 	"keywords": [],
 	"author": "",
