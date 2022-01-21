@@ -5,21 +5,40 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
 		<title><%= title %></title>
 	</head>
-	<body>
-		<main>
-			<h1>New message</h1>
-			<form action="" method="post">
-				<div>
-					<label for="message">Message:</label>
-					<textarea name="message" id="message" cols="30" rows="10"></textarea>
-				</div>
+	<body class="bg-gray-100 text-neutral-800">
+		<header class="relative">
+			<%- include("nav") %>
+		</header>
+		<main class="mt-24">
+			<div class="container mx-auto px-4 flex flex-col items-center">
+				<h1 class="font-bold text-4xl mt-4 mb-12">New message</h1>
 
-				<div>
-					<input type="submit" value="Create" />
-				</div>
-			</form>
+				<form action="" method="post" class="bg-white rounded-md shadow-md w-5/6 sm:w-96 p-6 mb-6 flex flex-col space-y-7">
+					<div class="flex flex-col">
+						<label for="message" class="font-semibold mb-1">Message:</label>
+						<textarea 
+							name="message" 
+							id="message" 
+							cols="30" 
+							rows="5" 
+							maxlength="200"
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+						></textarea>
+						<small class="mt-2 text-gray-500">200 characters limit</small>
+					</div>
+
+					<div class="flex flex-col">
+						<input 
+							type="submit" 
+							value="Create" 
+							class="bg-violet-600 text-white font-semibold w-full px-3 py-2 rounded-md hover:bg-violet-500 active:bg-violet-700 transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-violet-600"
+						/>
+					</div>
+				</form>
+			</div>
 		</main>
 	</body>
 </html>

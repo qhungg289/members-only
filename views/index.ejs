@@ -12,12 +12,12 @@
 		<header class="relative">
 			<%- include("nav") %> 
 		</header>
-		<main class="mt-24 grid sm:grid-cols-2 md:grid-cols-3">
+		<main class="mt-24 mb-6 grid gap-y-6 gap-x-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 			<% if (messages.length > 0) { %>
 				<% messages.forEach(message => { %>
-					<div class="bg-white flex items-end justify-between rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition my-3 sm:my-6 p-4 w-5/6 mx-auto">
+					<div class="bg-white flex items-end justify-between rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition transform hover:-translate-y-1 p-4 w-5/6 mx-auto">
 						<div>
-							<span class="text-slate-500">
+							<span class="text-gray-500">
 								Author:
 								<% if (currentUser && currentUser.isMember) { %>
 									<a href="<%= message.author.url %>" class="text-violet-600"><%= message.author.fullName %></a>
@@ -26,7 +26,7 @@
 								<% } %>
 							</span>
 							<p class="leading-relaxed my-3 font-medium"><%= message.content %></p>
-							<small class="text-slate-500 text-xs"><%= message.createdAt %></small>
+							<small class="text-gray-500 text-xs"><%= message.createdAt %></small>
 						</div>
 						<div>
 							<a href="<%= message.url %>" class="text-violet-600 text-sm font-medium hover:underline">Detail</a>
