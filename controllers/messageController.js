@@ -53,3 +53,13 @@ exports.messageDeleteGet = async (req, res, next) => {
 		return next(error);
 	}
 };
+
+exports.messageDeletePost = async (req, res, next) => {
+	try {
+		await Message.findByIdAndDelete(req.body.id).then(
+			res.redirect(req.user.url)
+		);
+	} catch (error) {
+		return next(error);
+	}
+};
