@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
+    <title><%= title %></title>
+</head>
+<body class="bg-gray-100 text-neutral-800 bg-fixed bg-center bg-cover" style="background-image: url('/pictures/dominik-schroder-FIKD9t5_5zQ-unsplash.jpg')">
+    <header class="relative">
+        <%- include("nav") %>
+    </header>
+    <main class="mt-24 mb-6 mx-auto space-y-6 md:max-w-xl">
+        <div class="bg-white rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition transform hover:-translate-y-1 p-4 w-5/6 mx-auto">
+            <div>
+                <span class="text-gray-500">
+                    Author:
+                    <span class="text-cyan-600"><%= message.author.fullName %></span>
+                </span>
+                <p class="leading-relaxed my-3 font-medium"><%= message.content %></p>
+                <small class="text-gray-500"><%= message.createdAt %></small>
+            </div>
+        </div>
+
+        <form action="" method="post" class="bg-white rounded-md shadow-md w-5/6 p-6 mb-6 flex flex-col space-y-7 mx-auto">
+            <p class="text-center text-lg">Are you really want to delete this message?</p>
+            
+            <input type="hidden" name="id" value="<%= message._id %>">
+
+            <div class="flex flex-col">
+                <input type="submit" value="Delete" class="bg-rose-600 text-white font-semibold w-full px-3 py-2 rounded-md hover:bg-rose-500 active:bg-rose-700 transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-rose-600">
+            </div>
+        </form>
+    </main>
+</body>
+</html>
