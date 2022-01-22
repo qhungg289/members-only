@@ -8,12 +8,12 @@
     <script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
     <title><%= title %></title>
 </head>
-<body class="bg-gray-100 text-neutral-800">
+<body class="bg-gray-100 text-neutral-800 bg-fixed bg-center bg-cover" style="background-image: url('/pictures/dominik-schroder-FIKD9t5_5zQ-unsplash.jpg')">
     <header class="relative">
         <%- include("nav") %>
     </header>
-    <main class="mt-24 flex flex-col sm:flex-row mx-auto sm:justify-around lg:justify-between">
-        <div class="flex flex-col bg-white rounded-md w-5/6 sm:max-w-xs h-fit mx-auto sm:mx-0 mb-6 sm:mb-0 sm:ml-6 p-4 shadow-md space-y-4">
+    <main class="mt-24 flex flex-col sm:flex-row sm:justify-center mx-auto">
+        <div class="flex flex-col bg-white rounded-md w-5/6 sm:max-w-xs h-fit mx-auto sm:mx-0 sm:ml-11 mb-6 sm:mb-0 p-4 shadow-md space-y-4">
             <div>
                 <img src="<%= user.avatar %>" alt="User avatar" class="w-16 h-16 rounded-full">
             </div>
@@ -39,14 +39,14 @@
             </div>
         </div>
 
-        <div class="mb-6 grid gap-y-6 gap-x-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div class="mb-6 space-y-4 w-full sm:max-w-lg">
             <% if (user.messages.length > 0) { %>
                 <% user.messages.forEach(message => { %>
                     <div class="bg-white flex items-end justify-between rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition transform hover:-translate-y-1 p-4 w-5/6 mx-auto">
                         <div>
                             <span class="text-gray-500">
                                 Author:
-                                <span class="text-violet-600"><%= user.fullName %></span>
+                                <span class="text-cyan-600"><%= user.fullName %></span>
                             </span>
                             <p class="leading-relaxed my-3 font-medium"><%= message.content %></p>
                             <small class="text-gray-500"><%= message.createdAt %></small>

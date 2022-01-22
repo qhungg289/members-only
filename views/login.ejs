@@ -8,7 +8,7 @@
 		<script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
 		<title><%= title %></title>
 	</head>
-	<body class="bg-gray-100 text-neutral-800">
+	<body class="bg-gray-100 text-neutral-800 bg-fixed bg-center bg-cover" style="background-image: url('/pictures/dominik-schroder-FIKD9t5_5zQ-unsplash.jpg')">
 		<header class="relative">
 			<%- include("nav") %>
 		</header>
@@ -34,7 +34,7 @@
 							id="username"
 							value="<%= body.username %>"
 							required
-							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-cyan-600 focus:ring focus:ring-cyan-600"
 						/>
 					</div>
 
@@ -45,7 +45,7 @@
 							name="password" 
 							id="password" 
 							required 
-							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-violet-600 focus:ring focus:ring-violet-600"
+							class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-cyan-600 focus:ring focus:ring-cyan-600"
 						/>
 					</div>
 
@@ -53,7 +53,7 @@
 						<input 
 							type="submit" 
 							value="Log in" 
-							class="bg-violet-600 text-white font-semibold w-full px-3 py-2 rounded-md hover:bg-violet-500 active:bg-violet-700 transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-violet-600"
+							class="bg-cyan-600 text-white font-semibold w-full px-3 py-2 rounded-md hover:bg-cyan-500 active:bg-cyan-700 transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-cyan-600"
 						/>
 					</div>
 				</form>
