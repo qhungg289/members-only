@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="shortcut icon" href="/pictures/favicon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
     <title><%= title %></title>
 </head>
@@ -51,7 +52,7 @@
                             <p class="leading-relaxed my-3 font-medium"><%= message.content %></p>
                             <small class="text-gray-500"><%= message.createdAt %></small>
                         </div>
-                        <% if (currentUser.id == user._id) { %>
+                        <% if (isLogIn) { %>
                             <div>
                                 <a href="<%= message.url %>/delete" class="text-rose-600 text-sm font-medium hover:underline">
                                     <i class="fas fa-trash-alt"></i>
