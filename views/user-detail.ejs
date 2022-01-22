@@ -51,12 +51,14 @@
                             <p class="leading-relaxed my-3 font-medium"><%= message.content %></p>
                             <small class="text-gray-500"><%= message.createdAt %></small>
                         </div>
-                        <div>
-                            <a href="<%= message.url %>/delete" class="text-rose-600 text-sm font-medium hover:underline">
-                                <i class="fas fa-trash-alt"></i>
-                                Delete
-                            </a>
-                        </div>
+                        <% if (currentUser.id == user._id) { %>
+                            <div>
+                                <a href="<%= message.url %>/delete" class="text-rose-600 text-sm font-medium hover:underline">
+                                    <i class="fas fa-trash-alt"></i>
+                                    Delete
+                                </a>
+                            </div>
+                        <% } %>
                     </div>
                 <% }) %>
             <% } %>
