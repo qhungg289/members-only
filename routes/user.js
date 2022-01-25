@@ -18,4 +18,8 @@ router.get("/:id/edit", userController.userEditGet);
 
 router.post("/:id/edit", userController.userEditPost);
 
+router.get("/:id/admin", userController.userAdminGet);
+
+router.post("/:id/admin", userController.userAdminPost);
+
 module.exports = router;
