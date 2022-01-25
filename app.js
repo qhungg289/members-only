@@ -46,4 +46,4 @@ app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`Server start on localhost:${port}`));
+app.listen(port, () => console.log(`Server start on port: ${port}`));
