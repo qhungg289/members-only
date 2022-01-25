@@ -21,11 +21,16 @@
             <div class="space-y-2">
                 <h1 class="font-semibold text-xl"><%= user.fullName %></h1>
                 <p class="text-sm text-gray-500">@<%= user.username %></p>
+                <p>Messages: <%= user.messages.length %></p>
                 <% if (isLogIn) { %>
                     <div class="space-y-4 flex flex-col">
                         <a href="<%= user.url %>/edit" class="px-3 py-2 font-medium rounded-md bg-emerald-50 text-emerald-500 hover:bg-emerald-100 transition">
                             <i class="fas fa-user-edit"></i>
                             Edit
+                        </a>
+                        <a href="<%= user.url %>/admin" class="px-3 py-2 font-medium rounded-md bg-fuchsia-50 text-fuchsia-500 hover:bg-fuchsia-100 transition">
+                            <i class="fas fa-users-cog"></i>
+                            Admin
                         </a>
                         <a href="<%= user.url %>/member" class="px-3 py-2 font-medium rounded-md bg-yellow-50 text-yellow-500 hover:bg-yellow-100 transition">
                             <i class="fas fa-star"></i>
