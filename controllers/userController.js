@@ -75,21 +75,33 @@ exports.userEditGet = async (req, res, next) => {
 exports.userEditPost = [
 	check("firstName").exists().isLength({ min: 1 }).trim().escape(),
 	check("lastName").exists().isLength({ min: 1 }).trim().escape(),
+	check("username").exists().isLength({ min: 1 }).trim().escape(),
 	async (req, res, next) => {
 		const errors = validationResult(req);
 
 		if (!errors.isEmpty()) {
 			return res.render("user-edit", {
-				user,
+				user: req.body,
 				title: "onlyFUN! | Edit personal information",
 				errors: errors.array(),
 			});
 		}
 
 		try {
+			const user_tmp = await User.findOne({ username: req.body.username });
+
+			if (user_tmp) {
+				return res.render("user-edit", {
+					user: req.body,
+					title: "onlyFUN! | Edit personal information",
+					errors: [{ msg: "Username already exist" }],
+				});
+			}
+
 			const user = await User.findByIdAndUpdate(req.params.id, {
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,
+				username: req.body.username,
 			});
 
 			res.redirect(user.url);
