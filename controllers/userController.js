@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Message = require("../models/Message");
 const { check, validationResult } = require("express-validator");
 
 exports.userDetailGet = async (req, res, next) => {
@@ -18,10 +19,6 @@ exports.userDetailGet = async (req, res, next) => {
 };
 
 exports.userMemberGet = (req, res, next) => {
-	if (!(req.user && req.user._id == req.params.id)) {
-		return res.redirect("/login");
-	}
-
 	res.render("user-member", {
 		title: `onlyFUN! | Become a member`,
 		errors: [],
@@ -29,7 +26,7 @@ exports.userMemberGet = (req, res, next) => {
 };
 
 exports.userMemberPost = [
-	check("secret").exists().trim().escape(),
+	check("secret").exists().isLength({ min: 1 }).trim().escape(),
 	async (req, res, next) => {
 		const errors = validationResult(req);
 
@@ -47,7 +44,7 @@ exports.userMemberPost = [
 				user.isMember = true;
 				await user.save().then(res.redirect(user.url));
 			} else {
-				res.render("user-member", {
+				return res.render("user-member", {
 					title: `onlyFUN! | Become a member`,
 					errors: [{ msg: "Secret key is incorrect" }],
 				});
@@ -105,6 +102,51 @@ exports.userEditPost = [
 			});
 
 			res.redirect(user.url);
+		} catch (error) {
+			return next(error);
+		}
+	},
+];
+
+exports.userAdminGet = async (req, res, next) => {
+	const user = await User.findById(req.params.id);
+
+	if (user.isAdmin) {
+		const messages = await Message.find({}).populate("author");
+
+		return res.render("admin-dashboard", {
+			title: "onlyFUN | Admin dashboard",
+			messages,
+		});
+	}
+
+	res.render("user-admin", { title: "onlyFUN | Admin access", errors: [] });
+};
+
+exports.userAdminPost = [
+	check("secret").exists().isLength({ min: 1 }).trim().escape(),
+	async (req, res, next) => {
+		const errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			return res.render("user-admin", {
+				title: "onlyFUN | Admin access",
+				errors: errors.array(),
+			});
+		}
+
+		try {
+			const user = await User.findById(req.params.id);
+
+			if (req.body.secret == "theodinproject@admin") {
+				user.isAdmin = true;
+				user.save().then(res.redirect(user.url));
+			} else {
+				return res.render("user-admin", {
+					title: "onlyFUN | Admin access",
+					errors: [{ msg: "Secret key is incorrect" }],
+				});
+			}
 		} catch (error) {
 			return next(error);
 		}
