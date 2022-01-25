@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="shortcut icon" href="/pictures/favicon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/313ff853e5.js" crossorigin="anonymous"></script>
+    <title><%= title %></title>
+</head>
+<body class="bg-gray-100 text-neutral-800 bg-fixed bg-center bg-cover" style="background-image: url('/pictures/dominik-schroder-FIKD9t5_5zQ-unsplash.jpg')">
+    <headder class="relative">
+        <%- include("nav") %>
+    </headder>
+    <main class="mt-24">
+        <div class="container mx-auto px-4 flex flex-col items-center">
+            <p class="my-6 font-semibold text-xl">Enter the secret key to become an admin</p>
+            <form action="" method="post" class="bg-white rounded-md shadow-md w-5/6 sm:w-96 p-6 mb-6 flex flex-col space-y-7">
+                <% if (errors.length > 0) { %>
+                    <% errors.forEach(error => { %>
+                        <p class="bg-red-100 text-red-500 font-semibold rounded-md px-3 py-2"><%= error.msg %></p>
+                    <% }) %>
+                <% } %>
+
+                <div class="flex flex-col">
+                    <label for="secret" class="font-semibold mb-1">Secret key:</label>
+                    <input type="password" name="secret" id="secret" class="border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-cyan-600 focus:ring focus:ring-cyan-600">
+                </div>
+
+                <div class="flex flex-col">
+                    <input type="submit" value="Submit"
+                    class="bg-cyan-600 text-white font-semibold w-full px-3 py-2 rounded-md hover:bg-cyan-500 active:bg-cyan-700 transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-cyan-600">
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
